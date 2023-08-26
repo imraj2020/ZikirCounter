@@ -8,8 +8,22 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+
+    <!-- view for AdMob Banner Ad -->
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#AEEA00"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-5994022117254981~4330655576" />
+
+
     <RelativeLayout
         android:id="@+id/myRelativeLayout"
+        android:layout_below="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
@@ -42,6 +56,7 @@
         android:id="@+id/mylinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/adView"
         android:orientation="horizontal"
         android:visibility="visible">
 
@@ -80,6 +95,8 @@
         >
 
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:gravity="center"
-                android:text="Zikir Name"
+                android:text="Enter Zikir Name"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_20sdp" />
 

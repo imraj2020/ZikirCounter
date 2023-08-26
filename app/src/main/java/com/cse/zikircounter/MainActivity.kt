@@ -15,6 +15,9 @@ import androidx.room.Room
 import com.cse.zikircounter.RoomDB.ZikirCount
 import com.cse.zikircounter.RoomDB.ZikirDatabase
 import com.cse.zikircounter.databinding.ActivityMainBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 
 class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
     private lateinit var binding: ActivityMainBinding
@@ -25,10 +28,27 @@ class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
     lateinit var db: ZikirDatabase
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ZikirCountAdapter
+    lateinit var mAdView : AdView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        //ads function
+
+        MobileAds.initialize(this) {}
+
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
+
+
+
+
+
+        //end ads
 
 
          db = ZikirDatabase.getInstance(applicationContext)
@@ -218,8 +238,6 @@ class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
         binding.myRelativeLayout.visibility = View.GONE
 
     }
-
-
 
 
 }
