@@ -4,95 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#00BCD4"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/myRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ScrollView
+            android:id="@+id/myscrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/backbtn">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"/>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/backbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BACK"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/mylinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mylinear"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="visible">
 
-    <ImageView
-        android:id="@+id/menu"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/menu">
-    </ImageView>
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/menu"></ImageView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:textSize="@dimen/_20sdp"
+            android:gravity="center"
+            android:text="ZIKIR COUNTER"
             android:textColor="#3F51B5"
-            android:text="ZIKIR COUNTER"></TextView>
+            android:textSize="@dimen/_20sdp"></TextView>
 
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/zikirnumcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/mylinear"
         android:layout_margin="5dp"
+        android:visibility="visible"
+        app:cardBackgroundColor="#03A9F4"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:cardBackgroundColor="#03A9F4"
-        android:layout_below="@+id/mylinear"
 
         >
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/menu"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/ZikirName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:text="Subahan-Allah"
-        android:textSize="@dimen/_20sdp" />
+            <TextView
+                android:id="@+id/ZikirName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:gravity="center"
+                android:text="Zikir Name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20sdp" />
 
-    <TextView
-        android:id="@+id/scoreTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/digital7"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:includeFontPadding="false"
-        android:paddingBottom="@dimen/_10ssp"
-        android:text="@string/score_placeholder"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_60ssp" />
+            <TextView
+                android:id="@+id/scoreTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/digital7"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingBottom="@dimen/_10ssp"
+                android:text="@string/score_placeholder"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_60ssp" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/zikirbuttoncard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:cardBackgroundColor="#03A9F4"
         android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
         android:layout_marginBottom="@dimen/_50sdp"
-        >
+        android:visibility="visible"
+        app:cardBackgroundColor="#03A9F4"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,9 +138,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_20sdp"
-                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="COUNT"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_20sdp" />
 
 

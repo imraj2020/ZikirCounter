@@ -24,8 +24,12 @@ interface ZikirCountDAO {
     //Read
     @Query("SELECT * FROM ZikirCount")
     fun AllCount(): List<ZikirCount>
+    @Query("SELECT * FROM ZikirCount WHERE name = :name")
+    fun getZikirCountByName(name: String): ZikirCount?
 
 
+    @Query("DELETE FROM ZikirCount WHERE name = :itemName")
+     fun deleteItemByName(itemName: String)
 
 
 }
