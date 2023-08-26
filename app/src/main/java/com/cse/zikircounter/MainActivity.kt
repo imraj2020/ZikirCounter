@@ -16,6 +16,7 @@ import com.cse.zikircounter.RoomDB.ZikirCount
 import com.cse.zikircounter.RoomDB.ZikirDatabase
 import com.cse.zikircounter.databinding.ActivityMainBinding
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 
@@ -42,6 +43,10 @@ class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
         mAdView = findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
+
+
+
+
 
 
 
