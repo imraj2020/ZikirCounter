@@ -2,24 +2,24 @@ package com.cse.zikircounter
 
 import ZikirCountAdapter
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
 import com.cse.zikircounter.RoomDB.ZikirCount
 import com.cse.zikircounter.RoomDB.ZikirDatabase
 import com.cse.zikircounter.databinding.ActivityMainBinding
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import java.lang.Exception
+
 
 class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
     private lateinit var binding: ActivityMainBinding
@@ -53,6 +53,15 @@ class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
 
 
         binding.inecrementBtn.setOnClickListener(View.OnClickListener {
+
+//            val anim = ScaleAnimation(1f, 0.9f, 1f, 0.9f)
+//            anim.duration = 100
+//            view.startAnimation(anim)
+
+            val anim = ScaleAnimation(1f, 0.9f, 1f, 0.9f, ScaleAnimation.RELATIVE_TO_SELF, 0.5f, ScaleAnimation.RELATIVE_TO_SELF, 0.5f)
+            anim.duration = 1
+            binding.inecrementBtn.startAnimation(anim)
+
             score++
             setvalue(score)
         })

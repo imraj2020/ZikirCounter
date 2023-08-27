@@ -1,0 +1,24 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:state_pressed="false">
+        <bitmap android:src="@drawable/count" />
+    </item>
+    <item android:state_focused="true" android:state_pressed="true">
+        <shape>
+            <gradient android:startColor="#880f0f10"
+                android:centerColor="#880d0d0f"
+                android:endColor="#885d5d5e"
+                android:angle="90" />
+        </shape>
+    </item>
+    <item android:state_focused="false" android:state_pressed="true">
+        <shape>
+            <gradient android:startColor="#880f0f10"
+                android:centerColor="#880d0d0f"
+                android:endColor="#885d5d5e"
+                android:angle="90" />
+        </shape>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/count" />
+    </item>
+</selector>

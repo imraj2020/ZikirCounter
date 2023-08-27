@@ -201,7 +201,7 @@
                     android:id="@+id/inecrementBtn"
                     android:layout_width="@dimen/_110sdp"
                     android:layout_height="@dimen/_110sdp"
-                    android:background="@drawable/round_button_background"
+                    android:background="@drawable/count"
                     android:button="@android:color/transparent"
                     android:elevation="4dp"
                     android:gravity="center"
