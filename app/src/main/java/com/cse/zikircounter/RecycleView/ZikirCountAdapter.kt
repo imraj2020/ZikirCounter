@@ -32,13 +32,14 @@ class ZikirCountAdapter(
 
         DeleteBTN.setOnClickListener(View.OnClickListener {
 
-            db.getZikirDao().deleteItemByName(item.name)
+            val deletedItem = dataList[position] // Get the item being deleted
+            db.getZikirDao().deleteItemByName(deletedItem.name)
 
             val mutableDataList = dataList.toMutableList() // Convert to mutable list
             mutableDataList.removeAt(position)
             dataList = mutableDataList.toList() // Convert back to immutable list if needed
             notifyItemRemoved(position)
-
+            notifyItemRangeChanged(position, itemCount)
         })
 
 

@@ -19,12 +19,13 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
     private lateinit var binding: ActivityMainBinding
     var score: Int = 0
-    private lateinit var field1EditText: EditText
-    private lateinit var field2EditText: EditText
+    private lateinit var ETZikirName: EditText
+    private lateinit var ETZikirCount: EditText
     private lateinit var enteredText: String
     lateinit var db: ZikirDatabase
     private lateinit var recyclerView: RecyclerView
@@ -44,27 +45,11 @@ class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 
-
-
-
-
-
-
-
-
-
         //end ads
 
 
          db = ZikirDatabase.getInstance(applicationContext)
 
-
-//        db = Room.databaseBuilder(
-//            applicationContext,
-//            ZikirDatabase::class.java,
-//            "Zikir_list.db"
-//        )
-//            .allowMainThreadQueries().build()
 
 
         binding.inecrementBtn.setOnClickListener(View.OnClickListener {
@@ -82,15 +67,6 @@ class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
         binding.saveBtn.setOnClickListener(View.OnClickListener {
 
             showAlertDialog()
-//            val Contacts = Contact(
-//                0,
-//                binding.editText1.text.toString(),
-//                binding.editText2.text.toString(),
-//                binding.editText3.text.toString()
-//            )
-//
-//            db.getContactDao().InsertContact(Contacts)
-
 
         })
 
@@ -155,34 +131,25 @@ class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
         val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_layout, null)
 
 
-        field1EditText = dialogView.findViewById(R.id.editText1) // Initialize the EditText field
-        field2EditText = dialogView.findViewById(R.id.editText2) // Initialize the EditText field
-        field1EditText.setText(binding.ZikirName.text.toString())
-        field2EditText.setText("$score")
+        ETZikirName = dialogView.findViewById(R.id.ETZikirNames) // Initialize the EditText field
+        ETZikirCount = dialogView.findViewById(R.id.ETZikirCounts) // Initialize the EditText field
+        ETZikirName.setText(binding.ZikirName.text.toString())
+        ETZikirCount.setText("$score")
 
         val alertDialogBuilder = AlertDialog.Builder(context)
             .setView(dialogView)
-            .setTitle("Custom Dialog")
+            .setTitle("Enter Zikir Name & Zikir Count")
             .setPositiveButton("Save") { dialog, _ ->
-                val field1Text = field1EditText.text.toString()
-                val field2Text = field2EditText.text.toString()
-                val intValue: Int = field2Text.toInt()
+                val ETZikirName = ETZikirName.text.toString()
+                val ETZikirCount = ETZikirCount.text.toString()
+                val intValue: Int = ETZikirCount.toInt()
 
                 db = ZikirDatabase.getInstance(this)
 
-//                db = Room.databaseBuilder(
-//                    applicationContext,
-//                    ZikirDatabase::class.java,
-//                    "Zikir_list.db"
-//                )
-//                    .allowMainThreadQueries().build()
-
                 val ZikirCount = ZikirCount(
-                    field1Text,
+                    ETZikirName,
                     intValue
                 )
-
-
 
 
                 try {
@@ -195,19 +162,13 @@ class MainActivity : AppCompatActivity(), ZikirCountAdapter.Listener{
                         // Insert a new record
                         db.getZikirDao().InsertCount(ZikirCount)
                     }
-                } catch (e: NumberFormatException) {
+                } catch (e: Exception) {
                     // Handle the case where the string is not a valid integer
-                    Toast.makeText(context, "" + e, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Sorry Something Wrong" + e, Toast.LENGTH_SHORT).show()
                 }
 
 
-                // Process the entered text as needed
-                // For example, display a toast message with the entered text
-                Toast.makeText(
-                    context,
-                    "Field 1: $field1Text\nField 2: $field2Text",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(context, "Saved: $ETZikirName\n$ETZikirCount Times", Toast.LENGTH_SHORT).show()
 
                 dialog.dismiss()
             }
