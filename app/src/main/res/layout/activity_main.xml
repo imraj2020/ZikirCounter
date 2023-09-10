@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#AEEA00"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-5994022117254981/1926787855" />
+        app:adUnitId="ca-app-pub-6000414993635636/7093635428" />
 
 
     <RelativeLayout
